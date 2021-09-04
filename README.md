@@ -1,7 +1,17 @@
 # NoPixel_Lockpick_Bot
 Script that uses computer vision to do lockpick minigame for you
 
-Will have to update zone for your screen resolution
+## Dependencies
+
+1. Tesseract OCR https://github.com/UB-Mannheim/tesseract/wiki
+2. Everything in the [requirements.txt](requirements.txt)
+
+## Usage
+``` python NoPixel_Lockpick_Bot.py```
+
+## Config
+
+You will have to update the zone for your screen resolution
 ```
 zone = {"top": 169, "left": 1190, "width": 184, "height": 161}
 ```
