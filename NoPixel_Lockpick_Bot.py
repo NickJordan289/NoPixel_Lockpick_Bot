@@ -13,6 +13,7 @@ state = RESET
 starting_area = 0
 number = 0
 zone = {"top": 169, "left": 1190, "width": 184, "height": 161}
+number_zone = {"top": 30, "left": 60, "width": 50, "height": 100}
 
 # Preload templates
 templates = []
@@ -45,11 +46,9 @@ while True:
 
     # Find Number to press
     if number == 0:
-        number_crop = frame[30:130,60:110]
+        number_crop = frame[number_zone["top"]:number_zone["top]+number_zone["height"],number_zone["left"]:number_zone["left"]+number_zone["width"]]
         number_crop = cv2.cvtColor(number_crop, cv2.COLOR_HSV2BGR)
         img_gray = cv2.cvtColor(number_crop, cv2.COLOR_BGR2GRAY)
-        #cv2.imshow('',number_crop)
-        #cv2.waitKey(0)
         for i,template in enumerate(templates):
             res = cv2.matchTemplate(img_gray, template, cv2.TM_CCOEFF_NORMED)
             threshold = 0.8
