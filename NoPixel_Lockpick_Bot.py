@@ -46,7 +46,7 @@ while True:
 
     # Find Number to press
     if number == 0:
-        number_crop = frame[number_zone["top"]:number_zone["top]+number_zone["height"],number_zone["left"]:number_zone["left"]+number_zone["width"]]
+        number_crop = frame[number_zone["top"]:number_zone["top"]+number_zone["height"],number_zone["left"]:number_zone["left"]+number_zone["width"]]
         number_crop = cv2.cvtColor(number_crop, cv2.COLOR_HSV2BGR)
         img_gray = cv2.cvtColor(number_crop, cv2.COLOR_BGR2GRAY)
         for i,template in enumerate(templates):
