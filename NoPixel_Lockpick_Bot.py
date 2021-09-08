@@ -12,8 +12,8 @@ INTERCEPTION = 2
 state = RESET
 starting_area = 0
 number = 0
-zone = {"top": 169, "left": 1190, "width": 184, "height": 161}
-number_zone = {"top": 30, "left": 60, "width": 50, "height": 100}
+zone = {"top": 815, "left": 1190, "width": 180, "height": 180}
+number_zone = {"top": 60, "left": 70, "width": 40, "height": 50}
 
 # Preload templates
 templates = []
@@ -21,8 +21,8 @@ for i,template_path in enumerate(['1.png', '2.png', '3.png', '4.png']):
         templates.append(cv2.imread(template_path, 0))
 
 # Set colour ranges for bar
-blue_bar_lower = np.array([83, 90, 36], dtype="uint8")
-blue_bar_upper = np.array([87, 185, 174], dtype="uint8")
+blue_bar_lower = np.array([85, 187, 50], dtype="uint8")
+blue_bar_upper = np.array([93, 255, 178], dtype="uint8")
 
 # Main loop
 while True:    
@@ -35,7 +35,7 @@ while True:
     area = np.sum(mask == 255)
 
     # Update State
-    if state == FOUND and area/starting_area <= 0.8:
+    if state == FOUND and area/starting_area <= 0.9:
         state = INTERCEPTION
     elif state == RESET and area > 0:
         state = FOUND
