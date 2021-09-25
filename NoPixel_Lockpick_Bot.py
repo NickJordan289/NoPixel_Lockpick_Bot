@@ -2,6 +2,7 @@ import numpy as np # Math
 import cv2 # Computer vision 
 import pyautogui # Button pressing
 import mss # Screen grabbing
+import ctypes # Windows Get Resolution
 
 # State Values
 RESET = 0
@@ -12,6 +13,7 @@ INTERCEPTION = 2
 state = RESET
 starting_area = 0
 number = 0
+screen_width = ctypes.windll.user32.GetSystemMetrics(0)
 
 # Set test to true if testing on 
 # https://sharkiller.ddns.net/nopixel_minigame/lockpicks/
@@ -19,8 +21,8 @@ test = True
 if test: 
     template_path_prefix = 'templates/web/'
     # Set crop zones
-    zone = {"top": 169, "left": 1190, "width": 184, "height": 161} # Zone around bar
-    number_zone = {"top": 30, "left": 60, "width": 50, "height": 100} # Zone around number
+    zone = {"top": 175, "left": int(0.46*screen_width), "width": 184, "height": 161} # Zone around bar
+    number_zone = {"top": 30, "left": 55, "width": 65, "height": 100} # Zone around number
     # Set colour ranges for bar
     blue_bar_lower = np.array([80, 70, 105], dtype="uint8") # Min HSV threshold for blue target bar
     blue_bar_upper = np.array([98, 255, 200], dtype="uint8") # Max HSV threshold for blue target bar
