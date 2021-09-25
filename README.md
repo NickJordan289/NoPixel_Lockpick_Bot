@@ -3,8 +3,7 @@ Script that uses computer vision to do lockpick minigame for you
 
 ## Dependencies
 
-1. Tesseract OCR https://github.com/UB-Mannheim/tesseract/wiki
-2. Everything in the [requirements.txt](requirements.txt)
+1. Everything in the [requirements.txt](requirements.txt)
 
 ## Usage
 ``` python NoPixel_Lockpick_Bot.py```
