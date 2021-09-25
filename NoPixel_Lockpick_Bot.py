@@ -12,17 +12,31 @@ INTERCEPTION = 2
 state = RESET
 starting_area = 0
 number = 0
-zone = {"top": 815, "left": 1190, "width": 180, "height": 180}
-number_zone = {"top": 60, "left": 70, "width": 40, "height": 50}
+
+# Set test to true if testing on 
+# https://sharkiller.ddns.net/nopixel_minigame/lockpicks/
+test = True
+if test: 
+    template_path_prefix = 'templates/web/'
+    # Set crop zones
+    zone = {"top": 169, "left": 1190, "width": 184, "height": 161} # Zone around bar
+    number_zone = {"top": 30, "left": 60, "width": 50, "height": 100} # Zone around number
+    # Set colour ranges for bar
+    blue_bar_lower = np.array([80, 70, 105], dtype="uint8") # Min HSV threshold for blue target bar
+    blue_bar_upper = np.array([98, 255, 200], dtype="uint8") # Max HSV threshold for blue target bar
+else: 
+    template_path_prefix = 'templates/'
+    # Set crop zones
+    zone = {"top": 815, "left": 1190, "width": 180, "height": 180} # Zone around bar
+    number_zone = {"top": 60, "left": 70, "width": 40, "height": 50} # Zone around number
+    # Set colour ranges for bar
+    blue_bar_lower = np.array([85, 187, 50], dtype="uint8") # Min HSV threshold for blue target bar
+    blue_bar_upper = np.array([93, 255, 178], dtype="uint8") # Max HSV threshold for blue target bar
 
 # Preload templates
 templates = []
 for i,template_path in enumerate(['1.png', '2.png', '3.png', '4.png']):
-        templates.append(cv2.imread(template_path, 0))
-
-# Set colour ranges for bar
-blue_bar_lower = np.array([85, 187, 50], dtype="uint8")
-blue_bar_upper = np.array([93, 255, 178], dtype="uint8")
+        templates.append(cv2.imread(f'{template_path_prefix}{template_path}', 0))
 
 # Main loop
 while True:    
