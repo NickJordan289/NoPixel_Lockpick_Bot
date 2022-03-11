@@ -14,6 +14,7 @@ state = RESET
 starting_area = 0
 number = 0
 screen_width = ctypes.windll.user32.GetSystemMetrics(0)
+prev_area = 0
 
 # Set test to true if testing on 
 # https://sharkiller.ddns.net/nopixel_minigame/lockpicks/
@@ -61,7 +62,7 @@ while True:
         starting_area = 0
 
     # Find Number to press
-    if number == 0:
+    if number == 0 or area != prev_area:
         number_crop = frame[number_zone["top"]:number_zone["top"]+number_zone["height"],number_zone["left"]:number_zone["left"]+number_zone["width"]]
         number_crop = cv2.cvtColor(number_crop, cv2.COLOR_HSV2BGR)
         img_gray = cv2.cvtColor(number_crop, cv2.COLOR_BGR2GRAY)
@@ -72,10 +73,10 @@ while True:
             found = len(loc[0])
             if found > 0:
                 number = i+1
+        prev_area = area
 
     # Press number when in right zone
     if state == INTERCEPTION and number != 0:
         pyautogui.press(f'{number}')
         state = RESET
-        number = 0
-    
+        number = 0    
