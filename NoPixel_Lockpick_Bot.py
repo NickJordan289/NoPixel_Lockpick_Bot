@@ -19,6 +19,7 @@ prev_area = 0
 # Set test to true if testing on 
 # https://sharkiller.ddns.net/nopixel_minigame/lockpicks/
 test = True
+preview = True # If true a window will show where current zone is
 if test: 
     template_path_prefix = 'templates/web/'
     # Set crop zones
@@ -46,8 +47,9 @@ while True:
     # Get screenshot
     with mss.mss() as sct:
         frame = cv2.cvtColor(np.array(sct.grab(zone)), cv2.COLOR_BGR2HSV)
-    cv2.imshow('frame', frame)
-    cv2.waitKey(1)
+    if preview:
+        cv2.imshow('frame', frame)
+        cv2.waitKey(1)
 
     # Get area of target bar
     mask = cv2.inRange(frame, blue_bar_lower, blue_bar_upper)
