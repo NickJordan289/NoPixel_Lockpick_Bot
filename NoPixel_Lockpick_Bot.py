@@ -46,6 +46,8 @@ while True:
     # Get screenshot
     with mss.mss() as sct:
         frame = cv2.cvtColor(np.array(sct.grab(zone)), cv2.COLOR_BGR2HSV)
+    cv2.imshow('frame', frame)
+    cv2.waitKey(1)
 
     # Get area of target bar
     mask = cv2.inRange(frame, blue_bar_lower, blue_bar_upper)
