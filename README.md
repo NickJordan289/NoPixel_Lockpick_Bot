@@ -10,7 +10,7 @@ Script that uses computer vision to do lockpick minigame for you
 
 ## Config
 
-You will have to update the zone for your screen resolution ([tool](https://github.com/NickJordan289/cv2-mss-zone-creator))
+You will have to update the zone for your screen resolution [(tool)](https://github.com/NickJordan289/cv2-mss-zone-creator)
 ```
 zone = {"top": 169, "left": 1190, "width": 184, "height": 161}
 ```
